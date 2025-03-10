@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Provider {
+  EMAIL
+  GOOGLE
+  FACEBOOK
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String?
+  avatar        String?
+  provider      Provider  @default(EMAIL)
+  providerId    String?   // ID from the social provider
+  blogs         Blog[]    // Relation to blogs
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([email])
+  @@index([providerId])
+}
+
+model Blog {
+  id          String    @id @default(uuid())
+  title       String
+  content     String    @db.Text
+  published   Boolean   @default(false)
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  tags        String[]
+  imageUrl    String?
+
+  @@index([authorId])
+  @@index([published])
+}

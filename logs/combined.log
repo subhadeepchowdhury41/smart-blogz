@@ -1,0 +1,175 @@
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T07:46:55.533Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T07:46:55.536Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T08:35:09.161Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T08:35:09.163Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T08:58:53.731Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T08:58:53.734Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:00:47.737Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:00:47.740Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:11:49.817Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:11:49.819Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:11:54.808Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:11:54.812Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:12:18.068Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:12:18.070Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:16:52.518Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:16:52.520Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:16:59.542Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:16:59.544Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:17:42.722Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:17:42.725Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:17:44.480Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:17:44.483Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:18:55.138Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:18:55.140Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:37:25.897Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:37:25.899Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.400Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.401Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.404Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.405Z"}
+{"context":"AuthService","level":"info","message":"Creating new user with email: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.462Z"}
+{"context":"AuthService","level":"info","message":"Successfully created new user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.470Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.473Z"}
+{"context":"AuthController","level":"info","message":"Google authentication successful","service":"blog-app-backend","timestamp":"2025-03-10T09:37:34.474Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:43:28.952Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:43:28.954Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.463Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.464Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.466Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.466Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.475Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.485Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.490Z"}
+{"context":"AuthController","level":"info","message":"Google authentication successful","service":"blog-app-backend","timestamp":"2025-03-10T09:46:43.490Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:52:44.354Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:52:44.357Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:56:42.996Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:56:42.998Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:57:46.797Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:57:46.800Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:58:24.367Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T09:58:24.369Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:00:13.414Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:00:13.416Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:06:30.525Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:06:30.527Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:08:07.879Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:08:07.881Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:32:39.320Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:32:39.322Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:34:17.145Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:34:17.148Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:36:01.640Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:36:01.642Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:37:16.126Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:37:16.126Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T10:37:16.128Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:37:16.128Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:37:16.179Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:37:16.187Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:37:16.190Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:08.849Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:08.850Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T10:38:08.850Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:08.850Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:38:08.852Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:38:08.854Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:08.855Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: scofficials2002@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:42.924Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: scofficials2002@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:42.924Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T10:38:42.925Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: scofficials2002@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:42.925Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:38:42.927Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:38:42.928Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:38:42.929Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:39:59.640Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:39:59.640Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T10:39:59.641Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:39:59.641Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:39:59.643Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:39:59.644Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:39:59.645Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:40:29.768Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:40:29.768Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T10:40:29.769Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:40:29.769Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:40:29.771Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T10:40:29.773Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T10:40:29.774Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:42:16.844Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:42:16.847Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:42:30.903Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:42:30.905Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:42:55.934Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:42:55.936Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:43:05.550Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:43:05.553Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:43:13.037Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:43:13.039Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:45:02.530Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:45:02.533Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:45:26.514Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:45:26.516Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:58:02.178Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T10:58:02.181Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T12:00:36.994Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T12:00:36.995Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T12:00:36.997Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T12:00:36.997Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T12:00:37.084Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T12:00:37.092Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T12:00:37.097Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:16:37.442Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:16:37.444Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:22:08.330Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:22:08.333Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:41:19.890Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:41:19.892Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:42:12.364Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:42:12.367Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:43:50.646Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:43:50.648Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-10T12:50:37.061Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-10T12:50:37.062Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T12:50:37.063Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-10T12:50:37.063Z"}
+{"context":"AuthService","level":"info","message":"Creating new user with email: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-10T12:50:37.066Z"}
+{"context":"AuthService","level":"info","message":"Successfully created new user with ID: 105e8b7f-c3c4-4faf-ad5c-cc9ee95f0486","service":"blog-app-backend","timestamp":"2025-03-10T12:50:37.069Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-10T12:50:37.071Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:58:27.295Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T12:58:27.297Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T13:08:33.382Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T13:08:33.384Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T13:24:13.570Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T13:24:13.572Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T16:43:24.927Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-10T16:43:24.930Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:24.555Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:24.556Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T17:04:24.557Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:24.557Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:04:24.569Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:04:24.581Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:24.584Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:29.437Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:29.438Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T17:04:29.439Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:29.439Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:04:29.447Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:04:29.450Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:29.452Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:32.287Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:32.288Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T17:04:32.288Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:32.289Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:04:32.290Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:04:32.292Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:04:32.293Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:05:11.947Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:05:11.948Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-10T17:05:11.948Z"}
+{"context":"AuthService","level":"info","message":"Processing GOOGLE social login for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:05:11.948Z"}
+{"context":"AuthService","level":"info","message":"Updating existing user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:05:11.952Z"}
+{"context":"AuthService","level":"info","message":"Successfully updated user with ID: 5f314ce8-4cbb-472a-8a17-2a0d013c384b","service":"blog-app-backend","timestamp":"2025-03-10T17:05:11.960Z"}
+{"context":"AuthService","level":"info","message":"Generated JWT token for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-10T17:05:11.962Z"}

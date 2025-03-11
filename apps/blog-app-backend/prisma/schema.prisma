@@ -20,6 +20,7 @@ model User {
   avatar        String?
   provider      Provider  @default(EMAIL)
   providerId    String?   // ID from the social provider
+  lastLoginAt   DateTime?
   blogs         Blog[]    // Relation to blogs
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt

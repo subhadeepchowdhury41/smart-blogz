@@ -5,15 +5,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { GoogleStrategy } from './google.strategy';
-import { FacebookStrategy } from './facebook.strategy';
 import { JwtStrategy } from './jwt.strategy';
-import { PrismaModule } from '../prisma/prisma.module';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { SharedModule } from '../shared/shared.module';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [
-    PassportModule.register({ defaultStrategy: 'jwt' }),
     ConfigModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -22,11 +22,16 @@ import { SharedModule } from '../shared/shared.module';
       }),
       inject: [ConfigService],
     }),
-    PrismaModule,
     SharedModule,
+    PrismaModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, GoogleStrategy, FacebookStrategy, JwtStrategy],
-  exports: [AuthService],
+  providers: [
+    AuthService,
+    GoogleStrategy,
+    JwtStrategy,
+    JwtAuthGuard
+  ],
+  exports: [AuthService, JwtAuthGuard],
 })
 export class AuthModule {}

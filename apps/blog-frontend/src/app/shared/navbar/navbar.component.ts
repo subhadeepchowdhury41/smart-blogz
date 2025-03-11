@@ -8,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <nav class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+    <nav class="bg-white shadow-lg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex">
@@ -18,15 +18,15 @@ import { AuthService } from '../../auth/auth.service';
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
               <a routerLink="/blogs" 
                 class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2"
-                [class.border-indigo-500]="this._router.url === '/blogs'"
-                [class.border-transparent]="this._router.url !== '/blogs'">
+                [class.border-indigo-500]="currentUrl === '/blogs'"
+                [class.border-transparent]="currentUrl !== '/blogs'">
                 Blogs
               </a>
               <a *ngIf="user$ | async"
                 routerLink="/blogs/create"
                 class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2"
-                [class.border-indigo-500]="this._router.url === '/blogs/create'"
-                [class.border-transparent]="this._router.url !== '/blogs/create'">
+                [class.border-indigo-500]="currentUrl === '/blogs/create'"
+                [class.border-transparent]="currentUrl !== '/blogs/create'">
                 Create Blog
               </a>
             </div>
@@ -55,14 +55,21 @@ import { AuthService } from '../../auth/auth.service';
         </div>
       </div>
     </nav>
-    <!-- Spacer for fixed navbar -->
-    <div class="h-16"></div>
-  `
+  `,
+  styles: [`
+    :host {
+      display: block;
+    }
+  `]
 })
 export class NavbarComponent implements OnInit {
   private readonly _authService: AuthService;
   private readonly _router: Router;
   readonly user$;
+
+  get currentUrl(): string {
+    return this._router.url;
+  }
 
   constructor(authService: AuthService, router: Router) {
     this._authService = authService;

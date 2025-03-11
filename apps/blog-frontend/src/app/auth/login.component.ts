@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule],
   template: `
     <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full space-y-8">
@@ -54,48 +53,29 @@ import { ButtonModule } from 'primeng/button';
     }
   `]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   isLoading = false;
   error: string | null = null;
 
   constructor(
     private authService: AuthService,
-    private route: ActivatedRoute,
     private router: Router
-  ) {}
-
-  ngOnInit() {
-    // Handle OAuth callback
-    this.route.queryParams.subscribe(params => {
-      const token = params['token'];
-      const userData = params['user'];
-      
-      if (token && userData) {
-        this.isLoading = true;
-        try {
-          if (this.authService.handleAuthCallback(token, userData)) {
-            // Navigation is handled in AuthService
-            return;
-          }
-          this.error = 'Authentication failed. Please try again.';
-        } catch (e) {
-          console.error('Failed to handle auth callback:', e);
-          this.error = 'Authentication failed. Please try again.';
-        } finally {
-          this.isLoading = false;
-        }
-      }
-    });
-
+  ) {
     // Redirect if already authenticated
     if (this.authService.isAuthenticated()) {
-      const redirectUrl = localStorage.getItem('redirectUrl') || '/blogs';
-      this.router.navigate([redirectUrl]);
+      this.router.navigate(['/blogs']);
     }
   }
 
   login() {
     this.error = null;
-    this.authService.login();
+    this.isLoading = true;
+    try {
+      this.authService.login();
+    } catch (e) {
+      console.error('Failed to initiate login:', e);
+      this.error = 'Failed to initiate login. Please try again.';
+      this.isLoading = false;
+    }
   }
 }

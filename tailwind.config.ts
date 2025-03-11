@@ -4,8 +4,8 @@ import { createGlobPatternsForDependencies } from '@nx/angular/tailwind';
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    join(__dirname, 'apps/**/src/**/*.{html,ts,css}'),
-    join(__dirname, 'libs/**/src/**/*.{html,ts,css}'),
+    join(__dirname, 'apps/**/src/**/*.{html,ts,css,tsx}'),
+    join(__dirname, 'libs/**/src/**/*.{html,ts,css,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {

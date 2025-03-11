@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { AuthCallbackComponent } from './auth/auth-callback.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/blogs',
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: '/blogs', pathMatch: 'full' },
   {
     path: 'login',
     loadComponent: () => import('./auth/login.component').then(m => m.LoginComponent)
+  },
+  {
+    path: 'login/callback',
+    component: AuthCallbackComponent
   },
   {
     path: 'blogs',

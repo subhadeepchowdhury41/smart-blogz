@@ -8,7 +8,7 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
   template: `
     <div class="min-h-screen bg-gray-50">
       <app-navbar></app-navbar>
-      <main class="container mx-auto px-4 py-8">
+      <main class="container mx-auto px-4 py-8 mt-16">
         <router-outlet></router-outlet>
       </main>
       <app-snackbar></app-snackbar>

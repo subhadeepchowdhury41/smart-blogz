@@ -95,16 +95,24 @@ export class CreateBlogComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
+        this.error = 'File size must be less than 5MB';
         return;
       }
       if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+        this.error = 'Only JPEG, PNG, and WebP images are allowed';
         return;
       }
       try {
+        this.loading = true;
         const imageUrl = await this.blogService.uploadImage(file);
+        console.log('Uploaded image URL:', imageUrl);
         this.blogForm.patchValue({ imageUrl });
-      } catch {
-        // Error already handled by blog service
+        this.error = null;
+      } catch (error) {
+        this.error = 'Failed to upload image';
+        console.error('Image upload error:', error);
+      } finally {
+        this.loading = false;
       }
     }
   }

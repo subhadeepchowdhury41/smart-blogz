@@ -33,11 +33,38 @@
           type="file"
           accept="image/jpeg,image/png,image/webp"
           (change)="handleImageUpload($event)"
-          class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+          [disabled]="loading"
+          class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:opacity-50"
         >
-        <img *ngIf="blogForm.get('imageUrl')?.value" [src]="blogForm.get('imageUrl')?.value" class="h-20 w-20 object-cover rounded" alt="Cover preview">
+        <!-- Loading Spinner -->
+        <div *ngIf="loading" class="flex items-center justify-center">
+          <svg class="animate-spin h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+        <!-- Image Preview -->
+        <div *ngIf="blogForm.get('imageUrl')?.value" class="relative">
+          <img 
+            [src]="blogForm.get('imageUrl')?.value" 
+            class="h-20 w-20 object-cover rounded shadow-sm" 
+            [alt]="'Cover image preview'"
+            (error)="error = 'Failed to load image preview'"
+          >
+          <button
+            type="button"
+            (click)="blogForm.patchValue({ imageUrl: '' })"
+            class="absolute -top-2 -right-2 bg-red-100 rounded-full p-1 hover:bg-red-200"
+          >
+            <svg class="h-4 w-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
       </div>
       <p class="mt-1 text-sm text-gray-500">Max size: 5MB. Supported formats: JPEG, PNG, WebP</p>
+      <!-- Error Message -->
+      <p *ngIf="error" class="mt-1 text-sm text-red-600">{{ error }}</p>
     </div>
 
     <!-- Tags -->

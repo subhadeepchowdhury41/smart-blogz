@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { BlogService, Blog } from '../blog.service';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BlogService } from '../blog.service';
 import { SnackbarService } from '../../shared/snackbar.service';
 
 @Component({
@@ -10,156 +10,119 @@ import { SnackbarService } from '../../shared/snackbar.service';
   templateUrl: './edit-blog.component.html',
   styleUrls: ['./edit-blog.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class EditBlogComponent implements OnInit {
-  blog: Blog = {
-    id: '',
-    title: '',
-    content: '',
-    tags: [],
-    imageUrl: '',
-    published: false,
-    authorId: '',
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  };
+  blogForm: FormGroup;
+  loading = false;
   newTag = '';
-  isSubmitting = false;
-  error: string | null = null;
-  touched = {
-    title: false,
-    content: false,
-    imageUrl: false
-  };
+  tags: string[] = [];
+  blogId: string;
 
   constructor(
+    private fb: FormBuilder,
     private blogService: BlogService,
-    public router: Router,
     private route: ActivatedRoute,
+    public router: Router,
     private snackbar: SnackbarService
-  ) {}
+  ) {
+    this.blogForm = this.fb.group({
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      content: ['', [Validators.required, Validators.minLength(10)]],
+      imageUrl: ['']
+    });
 
-  ngOnInit() {
-    this.loadBlog();
+    this.blogId = this.route.snapshot.params['id'];
   }
 
-  markAsTouched(field: keyof typeof this.touched) {
-    this.touched[field] = true;
-  }
+  async ngOnInit() {
+    if (!this.blogId) {
+      this.snackbar.showError('Blog ID is required');
+      this.router.navigate(['/blogs']);
+      return;
+    }
 
-  get titleError(): string | null {
-    if (!this.touched.title) return null;
-    if (!this.blog.title.trim()) return 'Title is required';
-    if (this.blog.title.length < 3) return 'Title must be at least 3 characters';
-    if (this.blog.title.length > 100) return 'Title must be less than 100 characters';
-    return null;
-  }
-
-  get contentError(): string | null {
-    if (!this.touched.content) return null;
-    if (!this.blog.content.trim()) return 'Content is required';
-    if (this.blog.content.length < 10) return 'Content must be at least 10 characters';
-    return null;
-  }
-
-  async loadBlog() {
     try {
-      const id = this.route.snapshot.paramMap.get('id');
-      if (!id) {
-        throw new Error('Blog ID not found');
-      }
-      const blog = await this.blogService.getBlog(id);
-      this.blog = {
-        id: blog.id,
+      this.loading = true;
+      const blog = await this.blogService.getBlog(this.blogId);
+      
+      this.blogForm.patchValue({
         title: blog.title,
         content: blog.content,
-        tags: blog.tags || [],
-        imageUrl: blog.imageUrl || '',
-        published: blog.published,
-        authorId: blog.authorId,
-        createdAt: blog.createdAt,
-        updatedAt: blog.updatedAt
-      };
+        imageUrl: blog.imageUrl
+      });
+      
+      this.tags = blog.tags || [];
     } catch (error) {
-      console.error('Failed to load blog:', error);
-      this.snackbar.showMessage('Failed to load blog', 'error');
+      this.snackbar.showError('Failed to load blog');
       this.router.navigate(['/blogs']);
+    } finally {
+      this.loading = false;
     }
   }
 
   addTag() {
     const trimmedTag = this.newTag.trim();
-    if (trimmedTag && !this.blog.tags.includes(trimmedTag)) {
-      if (this.blog.tags.length >= 5) {
-        this.snackbar.showMessage('Maximum 5 tags allowed', 'error');
+    if (trimmedTag && !this.tags.includes(trimmedTag)) {
+      if (this.tags.length >= 5) {
+        this.snackbar.showError('Maximum 5 tags allowed');
         return;
       }
-      this.blog.tags.push(trimmedTag);
+      this.tags.push(trimmedTag);
       this.newTag = '';
     }
   }
 
   removeTag(tag: string) {
-    this.blog.tags = this.blog.tags.filter(t => t !== tag);
+    this.tags = this.tags.filter(t => t !== tag);
   }
 
   async handleImageUpload(event: any) {
     const file = event.target.files[0];
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
-        this.snackbar.showMessage('Image size should be less than 5MB', 'error');
+        this.snackbar.showError('Image size must be less than 5MB');
         return;
       }
       if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-        this.snackbar.showMessage('Only JPEG, PNG and WebP images are allowed', 'error');
+        this.snackbar.showError('Only JPEG, PNG and WebP images are allowed');
         return;
       }
       try {
-        this.markAsTouched('imageUrl');
         const imageUrl = await this.blogService.uploadImage(file);
-        this.blog.imageUrl = imageUrl;
-        this.snackbar.showMessage('Image uploaded successfully', 'success');
-      } catch (error) {
-        console.error('Failed to upload image:', error);
-        this.snackbar.showMessage('Failed to upload image', 'error');
+        this.blogForm.patchValue({ imageUrl });
+        this.snackbar.showSuccess('Image uploaded successfully');
+      } catch {
+        // Error already handled by blog service
       }
     }
   }
 
-  async updateBlog() {
-    // Mark all fields as touched
-    Object.keys(this.touched).forEach(key => {
-      this.markAsTouched(key as keyof typeof this.touched);
-    });
-
-    // Check for validation errors
-    if (this.titleError || this.contentError) {
-      this.snackbar.showMessage('Please fix the validation errors', 'error');
-      return;
-    }
-
-    if (!this.blog.title.trim() || !this.blog.content.trim()) {
-      this.snackbar.showMessage('Title and content are required', 'error');
+  async onSubmit() {
+    if (this.blogForm.invalid) {
+      Object.keys(this.blogForm.controls).forEach(key => {
+        const control = this.blogForm.get(key);
+        if (control?.invalid) {
+          control.markAsTouched();
+        }
+      });
+      this.snackbar.showError('Please fix the form errors');
       return;
     }
 
     try {
-      this.isSubmitting = true;
-      this.error = null;
-      await this.blogService.updateBlog(this.blog.id, {
-        title: this.blog.title.trim(),
-        content: this.blog.content.trim(),
-        tags: this.blog.tags,
-        imageUrl: this.blog.imageUrl
-      });
-      this.snackbar.showMessage('Blog updated successfully', 'success');
+      this.loading = true;
+      const blogData = {
+        ...this.blogForm.value,
+        tags: this.tags
+      };
+
+      await this.blogService.updateBlog(this.blogId, blogData);
       this.router.navigate(['/blogs']);
-    } catch (error) {
-      console.error('Failed to update blog:', error);
-      this.snackbar.showMessage('Failed to update blog', 'error');
+    } catch {
+      // Error already handled by blog service
     } finally {
-      this.isSubmitting = false;
+      this.loading = false;
     }
   }
 }

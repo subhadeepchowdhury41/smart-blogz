@@ -4,12 +4,20 @@ import { firstValueFrom, catchError, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SnackbarService } from '../shared/snackbar.service';
 
+export interface Author {
+  id: string;
+  email: string;
+  name: string;
+  avatar?: string;
+}
+
 export interface Blog {
   id: string;
   title: string;
   content: string;
   published: boolean;
   authorId: string;
+  author: Author;
   createdAt: string;
   updatedAt: string;
   tags: string[];
@@ -37,9 +45,9 @@ export class BlogService {
   private handleError(error: HttpErrorResponse, operation: string) {
     console.error(`${operation} failed:`, error);
     if (error.status === 401) {
-      this.snackbar.showMessage('Please log in to continue', 'error');
+      this.snackbar.showError('Please log in to continue');
     } else {
-      this.snackbar.showMessage(`Failed to ${operation.toLowerCase()}. Please try again.`, 'error');
+      this.snackbar.showError(`Failed to ${operation.toLowerCase()}. Please try again.`);
     }
     return throwError(() => error);
   }
@@ -52,7 +60,7 @@ export class BlogService {
         )
       );
     } catch (error) {
-      console.error('Error fetching blogs:', error);
+      this.snackbar.showError('Failed to fetch blogs');
       throw error;
     }
   }
@@ -65,7 +73,7 @@ export class BlogService {
         )
       );
     } catch (error) {
-      console.error(`Error fetching blog ${id}:`, error);
+      this.snackbar.showError('Failed to fetch blog');
       throw error;
     }
   }
@@ -77,10 +85,10 @@ export class BlogService {
           catchError(error => this.handleError(error, 'Create blog'))
         )
       );
-      this.snackbar.showMessage('Blog created successfully', 'success');
+      this.snackbar.showSuccess('Blog created successfully');
       return newBlog;
     } catch (error) {
-      console.error('Error creating blog:', error);
+      this.snackbar.showError('Failed to create blog');
       throw error;
     }
   }
@@ -92,10 +100,10 @@ export class BlogService {
           catchError(error => this.handleError(error, 'Update blog'))
         )
       );
-      this.snackbar.showMessage('Blog updated successfully', 'success');
+      this.snackbar.showSuccess('Blog updated successfully');
       return updatedBlog;
     } catch (error) {
-      console.error(`Error updating blog ${id}:`, error);
+      this.snackbar.showError('Failed to update blog');
       throw error;
     }
   }
@@ -107,9 +115,9 @@ export class BlogService {
           catchError(error => this.handleError(error, 'Delete blog'))
         )
       );
-      this.snackbar.showMessage('Blog deleted successfully', 'success');
+      this.snackbar.showSuccess('Blog deleted successfully');
     } catch (error) {
-      console.error(`Error deleting blog ${id}:`, error);
+      this.snackbar.showError('Failed to delete blog');
       throw error;
     }
   }
@@ -118,10 +126,17 @@ export class BlogService {
     const formData = new FormData();
     formData.append('file', file);
     
-    const response = await firstValueFrom(
-      this.http.post<{ url: string }>(`${this.apiUrl}/upload`, formData)
-    );
-    
-    return response.url;
+    try {
+      const response = await firstValueFrom(
+        this.http.post<{ url: string }>(`${this.apiUrl}/upload`, formData)
+      );
+      // Construct full URL for the image
+      const imageUrl = `${environment.fileUrl}${response.url}`;
+      this.snackbar.showSuccess('Image uploaded successfully');
+      return imageUrl;
+    } catch (error) {
+      this.snackbar.showError('Failed to upload image');
+      throw error;
+    }
   }
 }

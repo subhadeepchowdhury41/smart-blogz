@@ -8,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <nav class="bg-white shadow-lg">
+    <nav class="bg-white shadow-lg fixed top-0 w-full z-10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex">
@@ -64,27 +64,27 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
   private readonly _authService: AuthService;
-  private readonly _router: Router;
+  public readonly router: Router;
   readonly user$;
 
   get currentUrl(): string {
-    return this._router.url;
+    return this.router.url;
   }
 
   constructor(authService: AuthService, router: Router) {
     this._authService = authService;
-    this._router = router;
+    this.router = router;
     this.user$ = this._authService.user$;
   }
 
   ngOnInit() {}
 
   login() {
-    this._authService.login();
+    this._authService.login('google');
   }
 
   async logout() {
     await this._authService.logout();
-    this._router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 }

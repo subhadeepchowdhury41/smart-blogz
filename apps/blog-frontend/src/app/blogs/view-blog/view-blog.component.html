@@ -1,0 +1,71 @@
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex justify-center items-center py-12">
+    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="text-center py-12">
+    <h3 class="text-lg font-medium text-gray-900">Failed to load blog</h3>
+    <p class="mt-1 text-sm text-gray-500">Please try again later or go back to the blogs list.</p>
+    <div class="mt-6">
+      <a
+        routerLink="/blogs"
+        class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        Back to Blogs
+      </a>
+    </div>
+  </div>
+
+  <!-- Blog Content -->
+  <article *ngIf="!loading && !error && blog" class="prose prose-indigo max-w-none">
+    <!-- Cover Image -->
+    <img
+      *ngIf="blog.imageUrl"
+      [src]="blog.imageUrl"
+      [alt]="blog.title"
+      class="w-full h-64 object-cover rounded-lg shadow-lg mb-8"
+    >
+
+    <!-- Title -->
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ blog.title }}</h1>
+
+    <!-- Author Info -->
+    <div class="flex items-center mb-8">
+      <img
+        *ngIf="blog.author.avatar"
+        [src]="blog.author.avatar"
+        [alt]="getAuthorName(blog)"
+        class="h-10 w-10 rounded-full mr-3"
+      >
+      <div *ngIf="!blog.author.avatar" class="h-10 w-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mr-3">
+        {{ getAuthorName(blog).charAt(0).toUpperCase() }}
+      </div>
+      <div>
+        <div class="text-sm font-medium text-gray-900">{{ getAuthorName(blog) }}</div>
+        <div class="text-sm text-gray-500">
+          Posted on {{ blog.createdAt | date:'mediumDate' }}
+          <span *ngIf="blog.updatedAt !== blog.createdAt">
+            · Updated on {{ blog.updatedAt | date:'mediumDate' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span
+        *ngFor="let tag of blog.tags"
+        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800"
+      >
+        {{ tag }}
+      </span>
+    </div>
+
+    <!-- Content -->
+    <div class="prose prose-lg max-w-none">
+      {{ blog.content }}
+    </div>
+  </article>
+</div>

@@ -6,6 +6,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { GoogleStrategy } from './google.strategy';
 import { JwtStrategy } from './jwt.strategy';
+import { FacebookStrategy } from './facebook.strategy';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { SharedModule } from '../shared/shared.module';
 import { PrismaModule } from '../prisma/prisma.module';
@@ -30,6 +31,7 @@ import { PrismaModule } from '../prisma/prisma.module';
     AuthService,
     GoogleStrategy,
     JwtStrategy,
+    FacebookStrategy,
     JwtAuthGuard
   ],
   exports: [AuthService, JwtAuthGuard],

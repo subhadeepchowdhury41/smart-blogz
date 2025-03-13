@@ -1,27 +1,22 @@
 <div class="max-w-4xl mx-auto p-6">
   <h1 class="text-3xl font-bold mb-8">Edit Blog</h1>
 
-  <!-- Error Message -->
-  <div *ngIf="error" class="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded relative" role="alert">
-    <span class="block sm:inline">{{ error }}</span>
-  </div>
-
-  <form (ngSubmit)="updateBlog()" class="space-y-6">
+  <form [formGroup]="blogForm" (ngSubmit)="onSubmit()" class="space-y-6">
     <!-- Title -->
     <div>
       <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
       <input
         type="text"
         id="title"
-        name="title"
-        [(ngModel)]="blog.title"
-        (blur)="markAsTouched('title')"
-        [class]="'mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 ' + 
-                (titleError ? 'border-red-300' : 'border-gray-300')"
+        formControlName="title"
+        class="mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300"
         placeholder="Enter blog title"
-        required
       >
-      <p *ngIf="titleError" class="mt-1 text-sm text-red-600">{{ titleError }}</p>
+      <p *ngIf="blogForm.get('title')?.touched && blogForm.get('title')?.invalid" class="mt-1 text-sm text-red-600">
+        <span *ngIf="blogForm.get('title')?.errors?.['required']">Title is required</span>
+        <span *ngIf="blogForm.get('title')?.errors?.['minlength']">Title must be at least 3 characters</span>
+        <span *ngIf="blogForm.get('title')?.errors?.['maxlength']">Title must be less than 100 characters</span>
+      </p>
     </div>
 
     <!-- Cover Image -->
@@ -34,7 +29,7 @@
           (change)="handleImageUpload($event)"
           class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
         >
-        <img *ngIf="blog.imageUrl" [src]="blog.imageUrl" class="h-20 w-20 object-cover rounded" alt="Cover preview">
+        <img *ngIf="blogForm.get('imageUrl')?.value" [src]="blogForm.get('imageUrl')?.value" class="h-20 w-20 object-cover rounded" alt="Cover preview">
       </div>
       <p class="mt-1 text-sm text-gray-500">Max size: 5MB. Supported formats: JPEG, PNG, WebP</p>
     </div>
@@ -46,7 +41,7 @@
         <input
           type="text"
           [(ngModel)]="newTag"
-          name="newTag"
+          [ngModelOptions]="{standalone: true}"
           class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
           placeholder="Add a tag"
           (keyup.enter)="addTag()"
@@ -54,7 +49,7 @@
         <button
           type="button"
           (click)="addTag()"
-          [disabled]="blog.tags.length >= 5"
+          [disabled]="tags.length >= 5"
           class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Add
@@ -63,7 +58,7 @@
       <!-- Tag List -->
       <div class="mt-2 flex flex-wrap gap-2">
         <span
-          *ngFor="let tag of blog.tags"
+          *ngFor="let tag of tags"
           class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800"
         >
           {{ tag }}
@@ -85,16 +80,15 @@
       <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
       <textarea
         id="content"
-        name="content"
-        [(ngModel)]="blog.content"
-        (blur)="markAsTouched('content')"
+        formControlName="content"
         rows="10"
-        [class]="'mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 ' + 
-                (contentError ? 'border-red-300' : 'border-gray-300')"
+        class="mt-1 block w-full rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300"
         placeholder="Write your blog content here..."
-        required
       ></textarea>
-      <p *ngIf="contentError" class="mt-1 text-sm text-red-600">{{ contentError }}</p>
+      <p *ngIf="blogForm.get('content')?.touched && blogForm.get('content')?.invalid" class="mt-1 text-sm text-red-600">
+        <span *ngIf="blogForm.get('content')?.errors?.['required']">Content is required</span>
+        <span *ngIf="blogForm.get('content')?.errors?.['minlength']">Content must be at least 10 characters</span>
+      </p>
     </div>
 
     <!-- Submit Button -->
@@ -108,10 +102,10 @@
       </button>
       <button
         type="submit"
-        [disabled]="isSubmitting"
+        [disabled]="loading || blogForm.invalid"
         class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {{ isSubmitting ? 'Saving...' : 'Save Changes' }}
+        {{ loading ? 'Saving...' : 'Save Changes' }}
       </button>
     </div>
   </form>

@@ -2,21 +2,30 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export interface SnackbarMessage {
-  message: string;
-  type: 'success' | 'error' | 'info';
+  text: string;
+  type: 'success' | 'error';
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class SnackbarService {
-  private snackbarSubject = new BehaviorSubject<SnackbarMessage | null>(null);
-  snackbar$ = this.snackbarSubject.asObservable();
+  private messageSubject = new BehaviorSubject<SnackbarMessage | null>(null);
+  message$ = this.messageSubject.asObservable();
 
-  showMessage(message: string, type: 'success' | 'error' | 'info' = 'info') {
-    this.snackbarSubject.next({ message, type });
+  showSuccess(text: string) {
+    this.messageSubject.next({ text, type: 'success' });
+    this.autoHide();
+  }
+
+  showError(text: string) {
+    this.messageSubject.next({ text, type: 'error' });
+    this.autoHide();
+  }
+
+  private autoHide() {
     setTimeout(() => {
-      this.snackbarSubject.next(null);
-    }, 3000);
+      this.messageSubject.next(null);
+    }, 5000);
   }
 }

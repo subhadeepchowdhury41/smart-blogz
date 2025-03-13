@@ -78,4 +78,10 @@ export class AuthController {
       res.redirect('http://localhost:4200/login/callback?error=Authentication failed');
     }
   }
+
+  @Get('profile')
+  @UseGuards(JwtAuthGuard)
+  async getProfile(@Req() req: any) {
+    return req.user;
+  }
 }

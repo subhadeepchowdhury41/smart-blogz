@@ -1,6 +1,58 @@
-# 
+# Blog Application
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A modern blog application built with Angular and NestJS, featuring OAuth authentication, blog creation with image uploads, and a responsive UI.
+
+## Features
+
+- OAuth authentication with Google and Facebook
+- Blog creation with image upload support
+- Modern UI with Tailwind CSS
+- Secure file handling and validation
+- Full test coverage
+- Docker containerization
+- CI/CD pipeline with GitHub Actions
+
+## CI/CD Pipeline
+
+The application uses GitHub Actions for continuous integration and deployment, with the following stages:
+
+### 1. Compile and Test
+- Compiles both frontend and backend
+- Runs linting checks
+- Executes unit tests with coverage reports
+- Uses PostgreSQL service container for backend tests
+
+### 2. Build
+- Builds production-ready artifacts for both applications
+- Only runs on main branch pushes
+- Uploads build artifacts for deployment
+
+### 3. Docker
+- Builds optimized Docker images
+- Uses multi-stage builds for minimal image size
+- Pushes to Docker Hub with versioned tags
+- Implements Docker layer caching
+
+### 4. Deploy
+- Deploys to production environment
+- Uses latest Docker images
+- Maintains deployment history
+
+## Required GitHub Secrets
+
+Add these secrets to your GitHub repository settings (Settings > Secrets and variables > Actions):
+
+```
+DOCKER_USERNAME=your_dockerhub_username
+DOCKER_TOKEN=your_dockerhub_access_token
+```
+
+These secrets are used by the GitHub Actions workflow to authenticate with Docker Hub and push images. Make sure to:
+1. Create an access token in Docker Hub (Account Settings > Security > New Access Token)
+2. Copy the token immediately as it won't be shown again
+3. Add both secrets to your GitHub repository
+
+## Development Setup
 
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
 
@@ -17,23 +69,53 @@ To run the dev server for your app, use:
 
 ```sh
 npx nx serve blog-app-backend
+npx nx serve blog-frontend
 ```
 
 To create a production bundle:
 
 ```sh
-npx nx build blog-app-backend
+npx nx build blog-app-backend --configuration=production
+npx nx build blog-frontend --configuration=production
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
 npx nx show project blog-app-backend
+npx nx show project blog-frontend
 ```
 
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
 [More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Docker Development
+
+Run the entire stack locally:
+
+```bash
+# Build and start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop all services
+docker-compose down
+```
+
+## Testing
+
+Run tests with coverage:
+
+```bash
+# Frontend tests
+npx nx test blog-frontend --coverage
+
+# Backend tests
+npx nx test blog-app-backend --coverage
+```
 
 ## Add new projects
 

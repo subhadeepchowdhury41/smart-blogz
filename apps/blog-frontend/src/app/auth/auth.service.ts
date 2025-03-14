@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, firstValueFrom, catchError, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SnackbarService } from '../shared/snackbar.service';
 
 export interface User {
   id: string;
   email: string;
-  firstName?: string;
-  lastName?: string;
-  picture?: string;
+  name: string;
+  avatar: string;
+  provider: 'google' | 'facebook';
+  lastLoginAt?: string;
 }
 
 @Injectable({
@@ -30,47 +31,54 @@ export class AuthService {
     private router: Router,
     private snackbar: SnackbarService
   ) {
-    // Initialize auth state immediately
-    this.initializeAuth().catch(err => {
-      console.error('Auth initialization failed:', err);
-      // Don't clear auth on init failure - just log the error
-    });
+    this.initializeAuth();
   }
 
-  private async initializeAuth() {
+  private async initializeAuth(): Promise<void> {
     if (this.initialized) return;
-    this.initialized = true;
 
-    const token = localStorage.getItem(this.TOKEN_KEY);
-    const userStr = localStorage.getItem(this.USER_KEY);
-    
-    console.log('Auth initialization - Token exists:', !!token); // Debug log
-    
-    if (token && userStr) {
-      try {
+    try {
+      const token = localStorage.getItem(this.TOKEN_KEY);
+      const userStr = localStorage.getItem(this.USER_KEY);
+      
+      if (token && userStr) {
         const user = JSON.parse(userStr);
-        this.userSubject.next(user);
-        console.log('Auth initialized with user:', user.email); // Debug log
-      } catch (e) {
-        console.error('Failed to parse stored user:', e);
+        if (this.isValidUser(user)) {
+          this.userSubject.next(user);
+        } else {
+          this.clearAuth();
+        }
+      } else {
         this.clearAuth();
       }
-    } else {
-      this.userSubject.next(null);
-      console.log('No auth data found during initialization'); // Debug log
+    } catch (e) {
+      console.error('Failed to initialize auth:', e);
+      this.clearAuth();
+    } finally {
+      this.initialized = true;
     }
   }
 
-  login(provider: 'google' | 'facebook') {
-    const loginUrl = `${this.API_URL}/auth/${provider}`;
-    window.location.href = loginUrl;
+  private isValidUser(user: any): user is User {
+    return (
+      typeof user === 'object' &&
+      typeof user.id === 'string' &&
+      typeof user.email === 'string' &&
+      typeof user.name === 'string' &&
+      typeof user.avatar === 'string' &&
+      (user.provider === 'google' || user.provider === 'facebook')
+    );
+  }
+
+  login(provider: 'google' | 'facebook'): void {
+    window.location.href = `${this.API_URL}/auth/${provider}`;
   }
 
   async handleAuthCallback(params: URLSearchParams): Promise<void> {
     const error = params.get('error');
     if (error) {
       this.snackbar.showError(`Authentication failed: ${error}`);
-      this.router.navigate(['/login']);
+      await this.router.navigate(['/login']);
       return;
     }
 
@@ -79,50 +87,52 @@ export class AuthService {
 
     if (!token || !userStr) {
       this.snackbar.showError('Invalid authentication response');
-      this.router.navigate(['/login']);
+      await this.router.navigate(['/login']);
       return;
     }
 
     try {
-      const user = JSON.parse(decodeURIComponent(userStr));
+      // Handle both encoded and non-encoded user data for testing flexibility
+      const decodedUserStr = userStr.startsWith('%') ? decodeURIComponent(userStr) : userStr;
+      const user = JSON.parse(decodedUserStr);
+      
+      if (!this.isValidUser(user)) {
+        throw new Error('Invalid user data');
+      }
+      
       this.setAuth(token, user);
-      console.log('Auth callback successful - Token set'); // Debug log
       this.snackbar.showSuccess('Successfully logged in!');
-      this.router.navigate(['/blogs']);
+      await this.router.navigate(['/blogs']);
     } catch (e) {
       console.error('Failed to handle auth callback:', e);
       this.snackbar.showError('Failed to complete authentication');
-      this.router.navigate(['/login']);
+      await this.router.navigate(['/login']);
     }
   }
 
-  logout() {
+  async logout(): Promise<void> {
     this.clearAuth();
     this.snackbar.showSuccess('Successfully logged out');
-    this.router.navigate(['/login']);
+    await this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {
-    const isAuth = !!localStorage.getItem(this.TOKEN_KEY);
-    console.log('Auth check:', isAuth); // Debug log
-    return isAuth;
+    return !!localStorage.getItem(this.TOKEN_KEY);
   }
 
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);
   }
 
-  private setAuth(token: string, user: User) {
+  private setAuth(token: string, user: User): void {
     localStorage.setItem(this.TOKEN_KEY, token);
     localStorage.setItem(this.USER_KEY, JSON.stringify(user));
     this.userSubject.next(user);
-    console.log('Auth data set - Token and user stored'); // Debug log
   }
 
-  private clearAuth() {
+  private clearAuth(): void {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.USER_KEY);
     this.userSubject.next(null);
-    console.log('Auth cleared'); // Debug log
   }
 }

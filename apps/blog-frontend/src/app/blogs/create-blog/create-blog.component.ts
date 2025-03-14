@@ -78,12 +78,19 @@ export class CreateBlogComponent implements OnInit {
 
   addTag() {
     const trimmedTag = this.newTag.trim();
-    if (trimmedTag && !this.tags.includes(trimmedTag)) {
+    if (trimmedTag) {
+      if (this.tags.includes(trimmedTag)) {
+        this.error = 'Tag already exists';
+        this.newTag = '';
+        return;
+      }
       if (this.tags.length >= 5) {
+        this.error = 'Maximum 5 tags allowed';
         return;
       }
       this.tags.push(trimmedTag);
       this.newTag = '';
+      this.error = null;
     }
   }
 
@@ -130,6 +137,8 @@ export class CreateBlogComponent implements OnInit {
 
     try {
       this.isSubmitting = true;
+      this.error = null; // Reset any previous errors
+      
       const blogData = {
         ...this.blogForm.value,
         tags: this.tags
@@ -142,8 +151,8 @@ export class CreateBlogComponent implements OnInit {
       }
 
       this.router.navigate(['/blogs']);
-    } catch {
-      // Error already handled by blog service
+    } catch (error) {
+      this.error = 'Failed to create blog';
     } finally {
       this.isSubmitting = false;
     }

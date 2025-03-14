@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: apps/blog-app-backend/Dockerfile
+    container_name: blog-backend
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/blog_db
+      - JWT_SECRET=your_jwt_secret
+      - GOOGLE_CLIENT_ID=your_google_client_id
+      - GOOGLE_CLIENT_SECRET=your_google_client_secret
+      - FACEBOOK_APP_ID=your_facebook_app_id
+      - FACEBOOK_APP_SECRET=your_facebook_app_secret
+      - FRONTEND_URL=http://localhost
+    depends_on:
+      - db
+    networks:
+      - blog-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/blog-frontend/Dockerfile
+    container_name: blog-frontend
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - backend
+    networks:
+      - blog-network
+
+  db:
+    image: postgres:17-alpine
+    container_name: blog-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=blog_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - blog-network
+
+volumes:
+  postgres_data:
+
+networks:
+  blog-network:
+    driver: bridge

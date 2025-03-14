@@ -1,0 +1,162 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NODE_VERSION: '20.x'
+  DOCKER_REGISTRY: docker.io
+  DOCKER_BACKEND_IMAGE: ${{ secrets.DOCKER_USERNAME }}/blog-backend
+  DOCKER_FRONTEND_IMAGE: ${{ secrets.DOCKER_USERNAME }}/blog-frontend
+
+jobs:
+  compile-and-test:
+    name: Compile and Test
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: blog_db_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile projects
+        run: |
+          npx nx compile blog-frontend
+          npx nx compile blog-app-backend
+
+      - name: Run linting
+        run: |
+          npx nx lint blog-frontend
+          npx nx lint blog-app-backend
+
+      - name: Run unit tests with coverage
+        run: |
+          npx nx test blog-frontend --coverage
+          npx nx test blog-app-backend --coverage
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-reports
+          path: |
+            coverage/apps/blog-frontend
+            coverage/apps/blog-app-backend
+
+  build:
+    name: Build Applications
+    needs: compile-and-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build projects
+        run: |
+          npx nx build blog-frontend --configuration=production
+          npx nx build blog-app-backend --configuration=production
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist/apps/blog-frontend
+            dist/apps/blog-app-backend
+
+  docker:
+    name: Build and Push Docker Images
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/blog-app-backend/Dockerfile
+          push: true
+          tags: |
+            ${{ env.DOCKER_BACKEND_IMAGE }}:latest
+            ${{ env.DOCKER_BACKEND_IMAGE }}:${{ github.sha }}
+          cache-from: type=registry,ref=${{ env.DOCKER_BACKEND_IMAGE }}:latest
+          cache-to: type=inline
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: apps/blog-frontend/Dockerfile
+          push: true
+          tags: |
+            ${{ env.DOCKER_FRONTEND_IMAGE }}:latest
+            ${{ env.DOCKER_FRONTEND_IMAGE }}:${{ github.sha }}
+          cache-from: type=registry,ref=${{ env.DOCKER_FRONTEND_IMAGE }}:latest
+          cache-to: type=inline
+
+  deploy:
+    name: Deploy to Production
+    needs: docker
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update deployment status
+        run: |
+          echo "Deployment would happen here"
+          echo "Using images:"
+          echo "Backend: ${{ env.DOCKER_BACKEND_IMAGE }}:${{ github.sha }}"
+          echo "Frontend: ${{ env.DOCKER_FRONTEND_IMAGE }}:${{ github.sha }}"

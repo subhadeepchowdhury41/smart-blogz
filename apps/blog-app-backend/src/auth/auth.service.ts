@@ -32,6 +32,9 @@ export class AuthService {
 
       return user;
     } catch (error) {
+      if (error instanceof UnauthorizedException) {
+        throw error; // Re-throw user not found error
+      }
       this.logger.error('Token validation failed', error.stack, 'AuthService');
       throw new UnauthorizedException('Invalid token');
     }

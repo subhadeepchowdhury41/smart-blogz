@@ -63,38 +63,36 @@ export class BlogsController {
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
       destination: (req, file, callback) => {
+        console.log('file____________', file);
+        
         const uploadPath = join(process.cwd(), 'apps', 'blog-app-backend', 'uploads');
         if (!existsSync(uploadPath)) {
           mkdirSync(uploadPath, { recursive: true });
         }
-        
         callback(null, uploadPath);
       },
       filename: (req, file, callback) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
         const ext = extname(file.originalname).toLowerCase();
-        console.log(`filename: ${uniqueSuffix}${ext}`);
         callback(null, `${uniqueSuffix}${ext}`);
       },
-    }),
-    fileFilter: (req, file, callback) => {
-      const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
-      if (!allowedMimeTypes.includes(file.mimetype)) {
-        return callback(new BadRequestException('Only JPG, PNG, and GIF files are allowed'), false);
-      }
-      callback(null, true);
-    },
-    limits: {
-      fileSize: 5 * 1024 * 1024, // 5MB limit
-    },
+    })
   }))
   async uploadImage(@UploadedFile() file: Express.Multer.File) {
     if (!file) {
       throw new BadRequestException('No file uploaded');
     }
-    
-    console.log(`generated filename: ${file.filename}`);
-    // Return relative URL for the uploaded file
+    const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!allowedMimeTypes.includes(file.mimetype)) {
+      throw new BadRequestException('Only JPG, PNG, and GIF files are allowed');
+    }
+
+    // Validate file size (5MB limit)
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      throw new BadRequestException('File size exceeds 5MB limit');
+    }
+
     const url = `/uploads/${file.filename}`;
     return { url };
   }

@@ -58,7 +58,7 @@ jobs:
         run: npx nx build blog-frontend --configuration=production
 
       - name: Generate Prisma Client
-        run: npx prisma generate --schema .\apps\blog-app-backend\prisma\schema.prisma
+        run: npx prisma generate --schema ./apps/blog-app-backend/prisma/schema.prisma
 
       - name: Build Backend
         run: npx nx build blog-app-backend --configuration=production

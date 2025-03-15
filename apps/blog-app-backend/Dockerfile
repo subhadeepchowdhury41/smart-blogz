@@ -8,7 +8,6 @@ WORKDIR /app
 COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
-COPY workspace.json ./
 
 # Install dependencies (no dev dependencies to keep it clean)
 RUN npm ci

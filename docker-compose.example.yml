@@ -21,6 +21,8 @@ services:
       # URLs for OAuth and frontend communication
       - BACKEND_URL=${BACKEND_URL:-http://localhost:3000}
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost}
+    volumes:
+      - uploads_data:/app/uploads
     depends_on:
       - db
     networks:
@@ -56,6 +58,7 @@ services:
 
 volumes:
   postgres_data:
+  uploads_data:
 
 networks:
   blog-network:

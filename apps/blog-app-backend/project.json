@@ -17,13 +17,7 @@
         "isolatedConfig": true,
         "webpackConfig": "apps/blog-app-backend/webpack.config.js",
         "generatePackageJson": true,
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "apps/blog-app-backend/uploads",
-            "output": "uploads"
-          }
-        ]
+        "assets": []
       },
       "configurations": {
         "production": {

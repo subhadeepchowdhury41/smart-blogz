@@ -5,15 +5,15 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package files for dependency installation
-COPY package*.json ./
-COPY nx.json ./
-COPY tsconfig*.json ./
+COPY ./../../package*.json ./
+COPY ./../../nx.json ./
+COPY ./../../tsconfig*.json ./
 
 # Install dependencies
 RUN npm ci
 
 # Copy source code
-COPY apps/blog-app-backend ./apps/blog-app-backend
+COPY . ./apps/blog-app-backend
 
 # Build the application
 RUN npx nx build blog-app-backend

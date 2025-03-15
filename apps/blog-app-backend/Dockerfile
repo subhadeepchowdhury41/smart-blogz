@@ -8,7 +8,6 @@ WORKDIR /app
 COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
-COPY workspace.json ./
 
 # Install dependencies
 RUN npm ci
@@ -34,8 +33,8 @@ COPY --from=builder /app/dist/apps/blog-app-backend ./
 
 # Create uploads directory and set permissions
 RUN mkdir -p /app/uploads \
-    && chown -R node:node /app \
-    && chmod 755 /app/uploads
+  && chown -R node:node /app \
+  && chmod 755 /app/uploads
 
 # Switch to non-root user
 USER node

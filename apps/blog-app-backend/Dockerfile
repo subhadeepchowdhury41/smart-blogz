@@ -27,12 +27,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Create upload directory for runtime
-RUN mkdir -p /app/uploads && chown -R node:node /app
-
 # Copy build artifacts
 COPY --from=builder /app/dist/apps/blog-app-backend ./
-COPY --from=builder /app/apps/blog-app-backend/uploads ./uploads
 
 # Switch to non-root user
 USER node

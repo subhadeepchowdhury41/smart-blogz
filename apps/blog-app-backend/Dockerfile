@@ -1,13 +1,14 @@
-# Use Node.js LTS version
+# Build stage
 FROM node:20-alpine AS builder
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files for dependency installation
 COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
+COPY workspace.json ./
 
 # Install dependencies
 RUN npm ci
@@ -15,20 +16,26 @@ RUN npm ci
 # Copy source code
 COPY apps/blog-app-backend ./apps/blog-app-backend
 
-# Create upload directories
-RUN mkdir -p apps/blog-app-backend/uploads \
-    && mkdir -p apps/blog-app-backend/src/uploads
-
 # Build the application
 RUN npx nx build blog-app-backend
 
 # Production stage
 FROM node:20-alpine
 
+# Create app directory and set ownership
 WORKDIR /app
+
+# Install production dependencies only
+COPY --from=builder /app/dist/apps/blog-app-backend/package*.json ./
+RUN npm ci --only=production
 
 # Copy build artifacts
 COPY --from=builder /app/dist/apps/blog-app-backend ./
+
+# Create uploads directory and set permissions
+RUN mkdir -p /app/uploads \
+    && chown -R node:node /app \
+    && chmod 755 /app/uploads
 
 # Switch to non-root user
 USER node

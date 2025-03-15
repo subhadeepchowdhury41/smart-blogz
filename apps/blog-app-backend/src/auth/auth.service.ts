@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoggerService } from '../shared/logger.service';
-import { Provider } from '@prisma/client';
+import type { User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -60,7 +60,7 @@ export class AuthService {
           email,
           name: profile.firstName + ' ' + profile.lastName,
           avatar: profile.picture,
-          provider: profile.provider as Provider,
+          provider: profile.provider,
           providerId: profile.id,
           lastLoginAt: new Date()
         }

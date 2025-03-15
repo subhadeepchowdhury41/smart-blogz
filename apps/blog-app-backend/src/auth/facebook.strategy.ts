@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Profile, Strategy } from 'passport-facebook';
 import { LoggerService } from '../shared/logger.service';
+import type { Provider } from '@prisma/client';
 
 @Injectable()
 export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
@@ -32,7 +33,7 @@ export class FacebookStrategy extends PassportStrategy(Strategy, 'facebook') {
         lastName: name?.familyName,
         picture: photos?.[0]?.value,
         accessToken,
-        provider: 'FACEBOOK'
+        provider: 'FACEBOOK' as Provider
       };
 
       if (!user.email) {

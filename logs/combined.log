@@ -4,3 +4,7 @@
 {"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:04:31.497Z"}
 {"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:05:33.693Z"}
 {"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:05:33.696Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:06.714Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:06.716Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:32.919Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:32.921Z"}

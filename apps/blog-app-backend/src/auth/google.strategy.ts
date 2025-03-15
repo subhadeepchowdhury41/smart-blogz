@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 import { LoggerService } from '../shared/logger.service';
+import type { Provider } from '@prisma/client';
 
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
@@ -31,7 +32,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
         lastName: name.familyName,
         picture: photos[0].value,
         accessToken,
-        provider: 'GOOGLE'
+        provider: 'GOOGLE' as Provider
       };
 
       this.logger.log(`Successfully validated Google profile for user: ${user.email}`, 'GoogleStrategy');

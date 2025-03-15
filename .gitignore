@@ -44,3 +44,17 @@ Thumbs.db
 .nx/workspace-data
 
 .angular
+
+# Environment and Secret Files
+.env
+*.env
+.env.*
+!.env.example
+docker-compose.yml
+!docker-compose.example.yml
+terraform.tfvars
+!terraform.tfvars.example
+
+# Uploads directory
+apps/blog-app-backend/src/uploads/**/*
+!apps/blog-app-backend/src/uploads/.gitkeep

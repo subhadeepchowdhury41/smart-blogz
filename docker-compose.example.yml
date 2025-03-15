@@ -6,16 +6,21 @@ services:
       context: .
       dockerfile: apps/blog-app-backend/Dockerfile
     container_name: blog-backend
+    ports:
+      - "3000:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@localhost:5432/smart-blogz?schema=public
+      # Format: postgresql://[user]:[password]@[host]:[port]/[db]?schema=[schema]
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD:-postgres}@db:5432/smart-blogz?schema=public
       - JWT_SECRET=${JWT_SECRET}
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
       - FACEBOOK_APP_ID=${FACEBOOK_APP_ID}
       - FACEBOOK_APP_SECRET=${FACEBOOK_APP_SECRET}
-      - FRONTEND_URL=http://localhost
+      # URLs for OAuth and frontend communication
+      - BACKEND_URL=${BACKEND_URL:-http://localhost:3000}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost}
     depends_on:
       - db
     networks:
@@ -30,6 +35,8 @@ services:
       - "80:80"
     environment:
       - NODE_ENV=production
+      # Backend URL for API calls
+      - BACKEND_URL=${BACKEND_URL:-http://localhost:3000}
     depends_on:
       - backend
     networks:

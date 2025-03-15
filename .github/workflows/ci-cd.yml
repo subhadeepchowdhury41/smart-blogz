@@ -100,6 +100,7 @@ jobs:
         with:
           context: .
           push: true
+          dockerfile: ./apps/blog-app-backend/Dockerfile
           tags: ${{ steps.login-ecr.outputs.registry }}/smart-blogz-backend:${{ github.sha }},${{ steps.login-ecr.outputs.registry }}/smart-blogz-backend:latest
           build-args: |
             NODE_ENV=production
@@ -109,6 +110,7 @@ jobs:
         with:
           context: .
           push: true
+          dockerfile: ./apps/blog-frontend/Dockerfile
           tags: ${{ steps.login-ecr.outputs.registry }}/smart-blogz-frontend:${{ github.sha }},${{ steps.login-ecr.outputs.registry }}/smart-blogz-frontend:latest
           build-args: |
             NODE_ENV=production

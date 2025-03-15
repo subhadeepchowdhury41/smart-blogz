@@ -1,42 +1,47 @@
-# Build stage
+# Build Stage
 FROM node:20-alpine AS builder
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files for dependency installation
-COPY ../../package*.json ./
-COPY ../../nx.json ./
-COPY ../../tsconfig*.json ./
+# Copy necessary package files for efficient caching
+COPY package*.json ./
+COPY nx.json ./
+COPY tsconfig*.json ./
+COPY workspace.json ./
 
-# Install dependencies
+# Install dependencies (no dev dependencies to keep it clean)
 RUN npm ci
 
-# Copy source code
-COPY . ./apps/blog-app-backend
+# Copy full source code
+COPY . . 
 
-# Build the application
-RUN npx nx build blog-app-backend
+# Generate Prisma Client
+RUN npx prisma generate --schema=./apps/blog-app-backend/prisma/schema.prisma
 
-# Production stage
+# Build the backend app
+RUN npx nx build blog-app-backend --configuration=production
+
+# Production Stage
 FROM node:20-alpine
 
-# Create app directory and set ownership
+# Set working directory
 WORKDIR /app
 
-# Install production dependencies only
+# Copy only production dependencies
 COPY --from=builder /app/dist/apps/blog-app-backend/package*.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
-# Copy build artifacts
+# Copy built application files
 COPY --from=builder /app/dist/apps/blog-app-backend ./
 
-# Create uploads directory and set permissions
-RUN mkdir -p /app/uploads \
-  && chown -R node:node /app \
-  && chmod 755 /app/uploads
+# Copy Prisma migrations and schema if needed
+COPY --from=builder /app/apps/blog-app-backend/prisma ./prisma/
 
-# Switch to non-root user
+# Create an uploads directory
+RUN mkdir -p /app/uploads && chown -R node:node /app && chmod 755 /app/uploads
+
+# Use non-root user for security
 USER node
 
 # Expose port

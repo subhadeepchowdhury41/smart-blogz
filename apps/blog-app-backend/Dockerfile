@@ -9,11 +9,15 @@ COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
 
+# Install dependencies
+RUN npm ci
+
 # Copy source code
 COPY apps/blog-app-backend ./apps/blog-app-backend
 
-# Install dependencies
-RUN npm ci
+# Create upload directories
+RUN mkdir -p apps/blog-app-backend/uploads \
+    && mkdir -p apps/blog-app-backend/src/uploads
 
 # Build the application
 RUN npx nx build blog-app-backend
@@ -23,13 +27,15 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy built assets from builder stage
-COPY --from=builder /app/dist/apps/blog-app-backend ./
-COPY --from=builder /app/node_modules ./node_modules
+# Create upload directory for runtime
+RUN mkdir -p /app/uploads && chown -R node:node /app
 
-# Set environment variables
-ENV NODE_ENV=production
-ENV PORT=3000
+# Copy build artifacts
+COPY --from=builder /app/dist/apps/blog-app-backend ./
+COPY --from=builder /app/apps/blog-app-backend/uploads ./uploads
+
+# Switch to non-root user
+USER node
 
 # Expose port
 EXPOSE 3000

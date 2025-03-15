@@ -19,8 +19,8 @@
         "generatePackageJson": true,
         "assets": [
           {
-            "glob": "uploads/**/*",
-            "input": "apps/blog-app-backend/src",
+            "glob": "**/*",
+            "input": "apps/blog-app-backend/uploads",
             "output": "uploads"
           }
         ]

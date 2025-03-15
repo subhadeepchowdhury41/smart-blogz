@@ -55,6 +55,8 @@ docker-compose.yml
 terraform.tfvars
 !terraform.tfvars.example
 
-# Uploads directory
-apps/blog-app-backend/src/uploads/**/*
+# Uploads directories
+apps/blog-app-backend/uploads/*
+!apps/blog-app-backend/uploads/.gitkeep
+apps/blog-app-backend/src/uploads/*
 !apps/blog-app-backend/src/uploads/.gitkeep

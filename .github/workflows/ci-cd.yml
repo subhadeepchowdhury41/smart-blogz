@@ -57,6 +57,9 @@ jobs:
       - name: Build Frontend
         run: npx nx build blog-frontend --configuration=production
 
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
       - name: Build Backend
         run: npx nx build blog-app-backend --configuration=production
 

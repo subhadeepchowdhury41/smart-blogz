@@ -8,3 +8,5 @@
 {"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:06.716Z"}
 {"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:32.919Z"}
 {"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:32.921Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:26:23.074Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:26:23.076Z"}

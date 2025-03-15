@@ -1,0 +1,19 @@
+# Docker registry configuration
+docker_registry = "your-registry"  # e.g., "ghcr.io/username"
+
+# Image configuration
+backend_image  = "blog-backend"
+frontend_image = "blog-frontend"
+image_tag     = "latest"
+
+# Database configuration
+database_name     = "smart-blogz"
+database_user     = "postgres"
+database_password = "your-secure-password"
+
+# Authentication secrets
+jwt_secret           = "your-jwt-secret"
+google_client_id     = "your-google-client-id"
+google_client_secret = "your-google-client-secret"
+facebook_app_id      = "your-facebook-app-id"
+facebook_app_secret  = "your-facebook-app-secret"

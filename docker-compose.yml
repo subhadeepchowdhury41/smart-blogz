@@ -9,12 +9,12 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/blog_db
-      - JWT_SECRET=your_jwt_secret
-      - GOOGLE_CLIENT_ID=your_google_client_id
-      - GOOGLE_CLIENT_SECRET=your_google_client_secret
-      - FACEBOOK_APP_ID=your_facebook_app_id
-      - FACEBOOK_APP_SECRET=your_facebook_app_secret
+      - DATABASE_URL=postgresql://postgres:postgres@localhost:5432/smart-blogz?schema=public
+      - JWT_SECRET=s3cr3t
+      - GOOGLE_CLIENT_ID=641005806373-uvavsvhpffje9d0pb9upb0ugp5p2jijb.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
+      - FACEBOOK_APP_ID=1159066568979044
+      - FACEBOOK_APP_SECRET=c5840c662861c8e0654767f8558f3d54
       - FRONTEND_URL=http://localhost
     depends_on:
       - db
@@ -41,7 +41,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=blog_db
+      - POSTGRES_DB=smart-blogz
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:

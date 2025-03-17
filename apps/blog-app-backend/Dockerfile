@@ -8,9 +8,8 @@ COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
 
-# Copy the entire workspace
+# Copy the app source
 COPY apps/blog-app-backend ./apps/blog-app-backend
-COPY libs ./libs
 
 # Install dependencies
 RUN npm ci

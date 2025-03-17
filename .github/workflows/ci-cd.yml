@@ -99,6 +99,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          file: ./apps/blog-app-backend/Dockerfile
           push: true
           tags: ${{ steps.login-ecr.outputs.registry }}/smart-blogz-backend:${{ github.sha }},${{ steps.login-ecr.outputs.registry }}/smart-blogz-backend:latest
           build-args: |
@@ -107,7 +108,8 @@ jobs:
       - name: Build and push frontend
         uses: docker/build-push-action@v4
         with:
-          context: ./apps/blog-frontend
+          context: .
+          file: ./apps/blog-frontend/Dockerfile
           push: true
           tags: ${{ steps.login-ecr.outputs.registry }}/smart-blogz-frontend:${{ github.sha }},${{ steps.login-ecr.outputs.registry }}/smart-blogz-frontend:latest
           build-args: |

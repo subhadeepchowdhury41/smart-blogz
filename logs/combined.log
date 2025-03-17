@@ -10,3 +10,64 @@
 {"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:16:32.921Z"}
 {"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:26:23.074Z"}
 {"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-15T05:26:23.076Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-17T09:14:18.480Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-17T09:14:18.482Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:18:36.674Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:18:36.675Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T09:18:36.676Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:30:46.108Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:30:46.109Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T09:30:46.110Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:37:00.570Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:37:00.571Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T09:37:00.571Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:52:04.546Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T09:52:04.547Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T09:52:04.547Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T09:52:04.750Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T09:52:04.750Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T09:52:04.751Z"}
+{"context":"FacebookStrategy","level":"info","message":"Validating Facebook profile for user ID: 2073791389728020","service":"blog-app-backend","timestamp":"2025-03-17T09:54:12.490Z"}
+{"context":"FacebookStrategy","level":"info","message":"Successfully validated Facebook profile for user: scofficials2002@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T09:54:12.490Z"}
+{"context":"AuthController","level":"info","message":"Received Facebook callback","service":"blog-app-backend","timestamp":"2025-03-17T09:54:12.491Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T09:55:01.516Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T09:55:01.517Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T09:55:01.517Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:25:46.903Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:25:46.903Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:25:46.904Z"}
+{"context":"GoogleStrategy","level":"info","message":"Google Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-17T10:26:28.889Z"}
+{"context":"FacebookStrategy","level":"info","message":"Facebook Strategy initialized","service":"blog-app-backend","timestamp":"2025-03-17T10:26:28.891Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:27:23.875Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:27:23.875Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:27:23.877Z"}
+{"context":"FacebookStrategy","level":"info","message":"Validating Facebook profile for user ID: 2073791389728020","service":"blog-app-backend","timestamp":"2025-03-17T10:27:53.852Z"}
+{"context":"FacebookStrategy","level":"info","message":"Successfully validated Facebook profile for user: scofficials2002@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:27:53.852Z"}
+{"context":"AuthController","level":"info","message":"Received Facebook callback","service":"blog-app-backend","timestamp":"2025-03-17T10:27:53.853Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:28:01.919Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:28:01.920Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:28:01.920Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:28:43.407Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:28:43.407Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:28:43.408Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:29:08.929Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:29:08.929Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:29:08.930Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:29:12.010Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:29:12.011Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:29:12.011Z"}
+{"context":"FacebookStrategy","level":"info","message":"Validating Facebook profile for user ID: 2073791389728020","service":"blog-app-backend","timestamp":"2025-03-17T10:29:22.466Z"}
+{"context":"FacebookStrategy","level":"info","message":"Successfully validated Facebook profile for user: scofficials2002@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:29:22.466Z"}
+{"context":"AuthController","level":"info","message":"Received Facebook callback","service":"blog-app-backend","timestamp":"2025-03-17T10:29:22.467Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T10:29:54.195Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T10:29:54.195Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:29:54.196Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T10:30:15.290Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeep.chowdhury@webileapps.com","service":"blog-app-backend","timestamp":"2025-03-17T10:30:15.291Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:30:15.291Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:44:42.035Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:44:42.035Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:44:42.037Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:44:45.011Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:44:45.011Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:44:45.012Z"}

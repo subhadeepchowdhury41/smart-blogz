@@ -3,10 +3,12 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Copy root configuration files
 COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
+COPY eslint.config.* ./
+COPY .eslintrc* ./
 
 # Copy the app source
 COPY apps/blog-app-backend ./apps/blog-app-backend
@@ -18,7 +20,7 @@ RUN npm ci
 RUN npx prisma generate --schema ./apps/blog-app-backend/prisma/schema.prisma
 
 # Build the application
-RUN npx nx build blog-app-backend --configuration=production
+RUN npx nx build blog-app-backend --configuration=production --skip-nx-cache
 
 # Production stage
 FROM node:20-alpine

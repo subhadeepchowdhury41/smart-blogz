@@ -7,6 +7,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY nx.json ./
 COPY tsconfig*.json ./
+COPY eslint.config.* ./
+COPY .eslintrc* ./
 
 # Copy the entire workspace
 COPY apps/blog-frontend ./apps/blog-frontend
@@ -16,7 +18,7 @@ COPY libs ./libs
 RUN npm ci
 
 # Build the application
-RUN npx nx build blog-frontend --configuration=production
+RUN npx nx build blog-frontend --configuration=production --skip-nx-cache
 
 # Production stage
 FROM nginx:alpine

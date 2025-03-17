@@ -20,9 +20,9 @@ describe('CreateBlogComponent', () => {
   const mockUser: User = {
     id: 'test-user-id',
     email: 'test@example.com',
-    name: 'Test User',
-    avatar: 'test-avatar.jpg',
-    provider: 'google'
+    firstName: 'Test',
+    lastName: 'User',
+    picture: 'test-avatar.jpg',
   };
 
   const mockBlog: Blog = {

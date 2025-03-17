@@ -71,3 +71,9 @@
 {"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:44:45.011Z"}
 {"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:44:45.011Z"}
 {"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:44:45.012Z"}
+{"context":"GoogleStrategy","level":"info","message":"Validating Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:46:37.672Z"}
+{"context":"GoogleStrategy","level":"info","message":"Successfully validated Google profile for user: subhadeepchowdhury41@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:46:37.672Z"}
+{"context":"AuthController","level":"info","message":"Received Google callback","service":"blog-app-backend","timestamp":"2025-03-17T10:46:37.673Z"}
+{"context":"FacebookStrategy","level":"info","message":"Validating Facebook profile for user ID: 2073791389728020","service":"blog-app-backend","timestamp":"2025-03-17T10:47:03.159Z"}
+{"context":"FacebookStrategy","level":"info","message":"Successfully validated Facebook profile for user: scofficials2002@gmail.com","service":"blog-app-backend","timestamp":"2025-03-17T10:47:03.159Z"}
+{"context":"AuthController","level":"info","message":"Received Facebook callback","service":"blog-app-backend","timestamp":"2025-03-17T10:47:03.160Z"}
